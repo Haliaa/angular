@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../services/user.service";
-import {IUser} from "../../models/IUser";
+import {ActivatedRoute, Router} from "@angular/router";
+import {IUserDetails} from "../../models/IUserDetails";
 
 @Component({
   selector: 'app-user-details',
@@ -10,17 +9,23 @@ import {IUser} from "../../models/IUser";
 })
 export class UserDetailsComponent implements OnInit {
 
-  userDetailsObj:IUser;
+  userDetailsObj:IUserDetails
 
-  constructor(private activatedRoute:ActivatedRoute,
-              private userService:UserService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router:Router) {
+    this.activatedRoute.params.subscribe(value => {
+      // @ts-ignore
+      // console.log(this.router.getCurrentNavigation().extras.state['data']);
+      // @ts-ignore
+      // this.userDetailsObj =this.router.getCurrentNavigation().extras.state['data'] as IUserDetails
+      this.userDetailsObj =this.router.getCurrentNavigation()?.extras?.state?.['data'] as IUserDetails
+    })
+  }
 
   ngOnInit(): void {
-    // this.activatedRoute.url.subscribe(value => console.log(value))
-    // this.activatedRoute.params.subscribe(value => console.log(value))
-    this.activatedRoute.params.subscribe(({id}) =>{
-      this.userService.getUser(id).subscribe(value => this.userDetailsObj=value)
-    })
+      // this.activatedRoute.params.subscribe(value => {
+      // let {state: {data}} = history
+      // this.userDetailsObj=data as IUserDetails
+      // })
   }
 
 }
