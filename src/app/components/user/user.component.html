@@ -1,0 +1,12 @@
+<p>
+  {{user.id}}
+  {{user.name}}
+<!--  {{user.company.name}}-->
+
+<!--  http://localhost:4200/user-details/3-->
+<!--  <a routerLink="/user-details/{{user.id}}">details</a>-->
+<!--  <a routerLink="user-details/{{user.id}}">details</a>-->
+<!--  OR-->
+  <a [routerLink]="['user-details',user.id]">details</a>
+
+</p>
