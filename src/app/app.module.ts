@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import {InnerComponent} from "./components/inner/inner.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InnerComponent
   ],
   imports: [
-    BrowserModule,
-    HttpClientModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
