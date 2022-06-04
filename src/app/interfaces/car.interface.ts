@@ -1,6 +1,6 @@
-export interface ICar{
-  id?:number;
-  model:string;
-  year:string;
-  price:string;
+export interface ICar {
+  id: number;
+  model: string;
+  year: number;
+  price: number;
 }
